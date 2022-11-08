@@ -51,18 +51,18 @@
         <h5> INSPECCIONES DE SEGURIDAD Y AGRÍCOLAS SISTEMÁTICAS DE CTPAT/OEA DE 17 PUNTOS. </h5>
         <form>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Fecha" aria-label="Fecha">
-                <input type="text" class="form-control" placeholder="Hora de entrada" aria-label="Hora de entrada">
-                <input type="text" class="form-control" placeholder="Hora de salida" aria-label="Hora de salida">
+                <input id="fecha" type="date" class="form-control" placeholder="Fecha" aria-label="Fecha">
+                <input id="hEntrada" type="time" class="form-control" placeholder="Hora de entrada" aria-label="Hora de entrada">
+                <input id="hSalida" type="time" class="form-control" placeholder="Hora de salida" aria-label="Hora de salida">
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Puerto de origen" aria-label="Puerto de origen">
-                <input type="text" class="form-control" placeholder="Puerto de procedencia" aria-label="Puerto de procedencia">
-                <input type="text" class="form-control" placeholder="Puerto de destino" aria-label="Puerto de destino">
+                <input id="pOrigen" type="text" class="form-control" placeholder="Puerto de origen" aria-label="Puerto de origen">
+                <input id="pProced" type="text" class="form-control" placeholder="Puerto de procedencia" aria-label="Puerto de procedencia">
+                <input id="pDest" type="text" class="form-control" placeholder="Puerto de destino" aria-label="Puerto de destino">
             </div>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Tipo de mercancia" aria-label="Tipo de mercancia">
-                <input type="text" class="form-control" placeholder="Nombre de la empresa de transporte" aria-label="Nombre de la empresa de transporte">
+                <input id="tMerca" type="text" class="form-control" placeholder="Tipo de mercancia" aria-label="Tipo de mercancia">
+                <input id="nEmpre" type="text" class="form-control" placeholder="Nombre de la empresa de transporte" aria-label="Nombre de la empresa de transporte">
             </div>
 
 
@@ -136,7 +136,7 @@
     <!-- DIV PARA BOTON GUARDAR -->
     <div class="d-flex justify-content-center align-items-center" style="padding: 3rem;">
 
-        <button type="button" id="guardar" class="btn btn-success" style="margin-right: 2%;" disabled> Guardar cambios <i class="bi bi-patch-check"></i></button>
+        <button type="button" id="guardar" class="btn btn-success" style="margin-right: 2%;" > Guardar cambios <i class="bi bi-patch-check"></i></button>
 
     </div>
 
@@ -173,6 +173,8 @@
 </body>
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
+<script src="js/scriptPrincipal.js"></script>
+
 
 
 </html>
