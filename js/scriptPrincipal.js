@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
     //Dejando los campos vacios
 
     //Funcionamiento del boton guardar
@@ -37,8 +36,26 @@ $(document).ready(function () {
             } else {
                 alert("EL REGISTRO NO PUDO SER AÑADIDO");
             }
-        })
+        });
         
+        idCabeceraInsertada = $.ajax({
+            type: 'POST',
+            url: "php/cantidadCabecera.php",
+            global: false,
+            async: false,
+            data: {
+                param0: fecha,
+                param1: hEntrada,
+                param2: hSalida,
+            },
+            success: function (res) {
+                return res;
+            }
+        }).responseText;
+
+        console.log(idCabeceraInsertada);
+
+
     });
 
 })
