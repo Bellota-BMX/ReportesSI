@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -48,8 +48,10 @@
     <!-- Barra de navegacion con bootstrap -->
 
     <div class="d-flex flex-column" style="padding: 5rem;">
-        <h5> INSPECCIONES DE SEGURIDAD Y AGRÍCOLAS SISTEMÁTICAS DE CTPAT/OEA DE 17 PUNTOS. </h5>
+        <h5> INSPECCIONES DE SEGURIDAD Y AGRÍCOLAS SISTEMÁTICAS DE CTPAT/OEA DE 17 PUNTOS</h5>
+        <!-- Inicio del formulario -->
         <form>
+            <!-- Campos para la cabecera -->
             <div class="input-group mb-3">
                 <input id="fecha" type="date" class="form-control" placeholder="Fecha" aria-label="Fecha">
                 <input id="hEntrada" type="time" class="form-control" placeholder="Hora de entrada" aria-label="Hora de entrada">
@@ -65,9 +67,9 @@
                 <input id="nEmpre" type="text" class="form-control" placeholder="Nombre de la empresa de transporte" aria-label="Nombre de la empresa de transporte">
             </div>
 
-
-
+            <!-- Campos para los 52 puntos del checklist -->
             <div class="accordion">
+                <!-- 1. Inspeccion de cabezotes y chasis -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -77,7 +79,7 @@
                     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <div class="input-group mb-3">
-                                <select class="form-select" aria-label="Default select example">
+                                <select id="cumple1" class="form-select" aria-label="Default select example">
                                     <option selected>Cumple con la inspección</option>
                                     <option value="1">SI</option>
                                     <option value="2">NO</option>
@@ -85,17 +87,16 @@
                                 </select>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Observaciones" aria-label="Onservaciones">
+                                <input id="observ1" type="text" class="form-control" placeholder="Observaciones" aria-label="Onservaciones">
                             </div>
                             <div class="input-group mb-3">
                                 <input type="file" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
                             </div>
-
                             <img id="blah" width="40%" />
-
                         </div>
                     </div>
                 </div>
+                <!-- 2. Compartimiento del motor s/n -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -105,7 +106,7 @@
                     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                             <div class="input-group mb-3">
-                                <select class="form-select" aria-label="Default select example">
+                                <select id="cumple2" class="form-select" aria-label="Default select example">
                                     <option selected>Cumple con la inspección</option>
                                     <option value="1">SI</option>
                                     <option value="2">NO</option>
@@ -113,7 +114,7 @@
                                 </select>
                             </div>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Observaciones" aria-label="Onservaciones">
+                                <input id="observ2" type="text" class="form-control" placeholder="Observaciones" aria-label="Onservaciones">
                             </div>
                             <div class="input-group mb-3">
                                 <input type="file" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
@@ -124,29 +125,20 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
         </form>
-
-
     </div>
 
-    <!-- DIV PARA BOTON GUARDAR -->
+    <!-- DIV para el boton de guardado -->
     <div class="d-flex justify-content-center align-items-center" style="padding: 3rem;">
-
-        <button type="button" id="guardar" class="btn btn-success" style="margin-right: 2%;" > Guardar cambios <i class="bi bi-patch-check"></i></button>
-
+        <button type="button" id="guardar" class="btn btn-success" style="margin-right: 2%;"> Guardar cambios <i class="bi bi-patch-check"></i></button>
     </div>
+    <!-- FIN DE DIV para el boton de guardado -->
 
-
-    <!-- Footer -->
-
+    <!-- Footer de la pagina con bootstrap -->
     <footer class="mt-auto bg-dark text-center text-white">
         <!-- Grid container -->
         <div class="container p-1">
-
             <!-- Section: Imagen -->
             <section class="mb-1">
                 <img src="assets/iconfull.png" width="50rm">
@@ -168,13 +160,11 @@
         </div>
         <!-- Copyright -->
     </footer>
-
-    <!-- Final del footer -->
+    <!-- FIN DE Footer de la pagina con bootstrap -->
 </body>
+
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
 <script src="js/scriptPrincipal.js"></script>
-
-
 
 </html>
