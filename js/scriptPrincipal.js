@@ -1,9 +1,58 @@
 $(document).ready(function () {
 
-    //Dejando los campos vacios
+    //Declarando variables globales
     let fecha, hEntrada, hSalida, pOrigen, pProced, pDest, tMerca, nEmpre; //Variables de la cabecera
     let idCabeceraInsertada; //Identificador de la cabecera
     let cantidadDetalles = 3; //La cantidad de detalles a guardar + 1 
+
+    //Carga de todos los elementos del items del acordeon
+    $.ajax({
+        url: "php/obtener17Puntos.php",
+        method: "POST"
+    }).done(function (res) {
+        
+        //Se convierte el JSON en un objeto de javascript
+        var resultadoJSON = JSON.parse(res);
+        //Se imprime el objeto en consola para pruebas
+        console.log(resultadoJSON);
+
+        //Se recorre cada resultado del JSON obtenido con AJAX
+        $.each(resultadoJSON, function(i, item){
+            console.log(item.nombrePunto);
+            console.log(item.numeroPunto);
+
+            var accorItem =  `<div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse`+ item.numeroPunto +`" aria-expanded="false" aria-controls="collapse`+ item.numeroPunto +`">
+                    <span class="badge text-bg-secondary">`+ item.numeroPunto +`</span> &nbsp; `+ item.nombrePunto +`
+                </button>
+            </h2>
+            <div id="collapse`+ item.numeroPunto +`" class="accordion-collapse collapse" aria-labelledby="heading`+ item.numeroPunto +`" data-bs-parent="#accordionPuntos">
+                <div class="accordion-body">
+                    <div class="input-group mb-3">
+                        <select id="cumple`+ item.numeroPunto +`" class="form-select" aria-label="Opciones de cumplimiento">
+                            <option selected>Cumple con la inspección</option>
+                            <option value="1">SI</option>
+                            <option value="2">NO</option>
+                            <option value="3">N/A</option>
+                        </select>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input id="observ`+ item.numeroPunto +`" type="text" class="form-control" placeholder="Observaciones" aria-label="Onservaciones">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                    </div>
+                    <img id="blah" width="40%" />
+                </div>
+            </div>
+        </div>`;
+
+        $("#accordionPuntos").append(accorItem);
+
+        })
+
+    });
 
     //Funcionamiento del boton guardar
     $('#guardar').on('click', function () {
@@ -82,9 +131,9 @@ $(document).ready(function () {
                     param3: idCabeceraInsertada
                 },
             }).done(function (res) {
-                if(res=1){
+                if (res = 1) {
                     console.log("Detalle registrado");
-                }else{
+                } else {
                     console.log("Detalle no registrado");
                 }
             })

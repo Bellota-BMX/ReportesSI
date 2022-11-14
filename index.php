@@ -68,63 +68,8 @@
             </div>
 
             <!-- Campos para los 52 puntos del checklist -->
-            <div class="accordion">
-                <!-- 1. Inspeccion de cabezotes y chasis -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            <span class="badge text-bg-secondary">1</span> &nbsp; Inspeccion de cabezotes y chasis
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="input-group mb-3">
-                                <select id="cumple1" class="form-select" aria-label="Default select example">
-                                    <option selected>Cumple con la inspección</option>
-                                    <option value="1">SI</option>
-                                    <option value="2">NO</option>
-                                    <option value="3">N/A</option>
-                                </select>
-                            </div>
-                            <div class="input-group mb-3">
-                                <input id="observ1" type="text" class="form-control" placeholder="Observaciones" aria-label="Onservaciones">
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="file" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-                            </div>
-                            <img id="blah" width="40%" />
-                        </div>
-                    </div>
-                </div>
-                <!-- 2. Compartimiento del motor s/n -->
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <span class="badge text-bg-secondary">2</span> &nbsp; Compartimiento del motor s/n
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="input-group mb-3">
-                                <select id="cumple2" class="form-select" aria-label="Default select example">
-                                    <option selected>Cumple con la inspección</option>
-                                    <option value="1">SI</option>
-                                    <option value="2">NO</option>
-                                    <option value="3">N/A</option>
-                                </select>
-                            </div>
-                            <div class="input-group mb-3">
-                                <input id="observ2" type="text" class="form-control" placeholder="Observaciones" aria-label="Onservaciones">
-                            </div>
-                            <div class="input-group mb-3">
-                                <input type="file" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
-                            </div>
-
-                            <img id="blah" width="40%" />
-
-                        </div>
-                    </div>
-                </div>
+            <div class="accordion" id="accordionPuntos">
+                <!-- Se insertan los items con AJAX y JQUERY -->
             </div>
         </form>
     </div>

@@ -12,4 +12,6 @@ $consulta -> execute();
 
 $row = $consulta->fetch();
 
-echo $row ["idCabecera"];
+if(is_array($row)){
+    echo $row ["idCabecera"];
+  }
