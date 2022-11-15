@@ -55,7 +55,7 @@ $(document).ready(function () {
         })
     });
 
-    //Funcionamiento del boton guardar
+    //Funcionamiento del formulario al ser enviado
     $('#form').on('submit', function (e) {
         e.preventDefault();
 
@@ -90,57 +90,56 @@ $(document).ready(function () {
         }).done(function (res) {
             var resultado = res;
             if (resultado = 1) {
+                //Obtencion del ID de la cabecera insertada en el mismo proceso
+                idCabeceraInsertada = $.ajax({
+                    type: 'POST',
+                    url: "php/cantidadCabecera.php",
+                    global: false,
+                    async: false,
+                    data: {
+                        param0: fecha,
+                        param1: hEntrada,
+                        param2: hSalida,
+                    },
+                    success: function (res) {
+                        console.log("Dentro del ajax " + res);
+                        return res;
+                    }
+                }).responseText;
+
+                console.log(idCabeceraInsertada);
+
+                //Obteniendo los valores de los 52 detalles dentro de un ciclo
+                for (i = 1; i < cantidadDetalles; i++) {
+                    var cumple = $('#cumple' + i).val();
+                    var observ = $('#observ' + i).val();
+                    var idCatalogo = i;
+
+                    console.log(cumple);
+                    console.log(observ);
+                    console.log(idCatalogo);
+                    //Metodo AJAX para insertar el detalle en curso
+                    $.ajax({
+                        url: "php/guardarDetalle.php",
+                        method: "POST",
+                        data: {
+                            param0: cumple,
+                            param1: observ,
+                            param2: idCatalogo,
+                            param3: idCabeceraInsertada
+                        },
+                    }).done(function (res) {
+                        if (res = 1) {
+                            console.log("Detalle registrado");
+                        } else {
+                            console.log("Detalle no registrado");
+                        }
+                    })
+                }
                 alert("Cabecera añadido correctamente");
             } else {
                 alert("EL REGISTRO NO PUDO SER AÑADIDO");
             }
         });
-
-        //Obtencion del ID de la cabecera insertada en el mismo proceso
-        idCabeceraInsertada = $.ajax({
-            type: 'POST',
-            url: "php/cantidadCabecera.php",
-            global: false,
-            async: false,
-            data: {
-                param0: fecha,
-                param1: hEntrada,
-                param2: hSalida,
-            },
-            success: function (res) {
-                return res;
-            }
-        }).responseText;
-
-        console.log(idCabeceraInsertada);
-
-        //Obteniendo los valores de los 52 detalles dentro de un ciclo
-        for (i = 1; i < cantidadDetalles; i++) {
-            var cumple = $('#cumple' + i).val();
-            var observ = $('#observ' + i).val();
-            var idCatalogo = i;
-
-            console.log(cumple);
-            console.log(observ);
-            console.log(idCatalogo);
-            //Metodo AJAX para insertar el detalle en curso
-            $.ajax({
-                url: "php/guardarDetalle.php",
-                method: "POST",
-                data: {
-                    param0: cumple,
-                    param1: observ,
-                    param2: idCatalogo,
-                    param3: idCabeceraInsertada
-                },
-            }).done(function (res) {
-                if (res = 1) {
-                    console.log("Detalle registrado");
-                } else {
-                    console.log("Detalle no registrado");
-                }
-            })
-        }
     });
-
 })
