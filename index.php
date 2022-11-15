@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/heading.css">
     <link rel="icon" href="assets/iconfullRed.ico">
     <title>Reporte 17 puntos</title>
 </head>
@@ -48,37 +49,80 @@
     <!-- Barra de navegacion con bootstrap -->
 
     <div class="d-flex flex-column" style="padding: 5rem;">
-        <h5> INSPECCIONES DE SEGURIDAD Y AGRÍCOLAS SISTEMÁTICAS DE CTPAT/OEA DE 17 PUNTOS</h5>
+        <div class="one" style="padding: 10px">
+            <h3> INSPECCIONES DE SEGURIDAD Y AGRÍCOLAS SISTEMÁTICAS DE CTPAT/OEA DE 17 PUNTOS</h3>
+        </div>
         <!-- Inicio del formulario -->
-        <form>
+        <form id="form">
             <!-- Campos para la cabecera -->
-            <div class="input-group mb-3">
-                <input id="fecha" type="date" class="form-control" placeholder="Fecha" aria-label="Fecha">
-                <input id="hEntrada" type="time" class="form-control" placeholder="Hora de entrada" aria-label="Hora de entrada">
-                <input id="hSalida" type="time" class="form-control" placeholder="Hora de salida" aria-label="Hora de salida">
+            <div class="row g-3">
+                <div class="col-md">
+                    <div class="form-floating mb-3">
+                        <input id="fecha" type="date" class="form-control" placeholder="Fecha" aria-label="Fecha">
+                        <label>Fecha actual</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating mb-3">
+                        <input id="hEntrada" type="time" class="form-control" placeholder="Hora de entrada" aria-label="Hora de entrada">
+                        <label>Hora de entrada</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating mb-3">
+                        <input id="hSalida" type="time" class="form-control" placeholder="Hora de salida" aria-label="Hora de salida">
+                        <label>Hora de salida</label>
+                    </div>
+                </div>
             </div>
-            <div class="input-group mb-3">
-                <input id="pOrigen" type="text" class="form-control" placeholder="Puerto de origen" aria-label="Puerto de origen">
-                <input id="pProced" type="text" class="form-control" placeholder="Puerto de procedencia" aria-label="Puerto de procedencia">
-                <input id="pDest" type="text" class="form-control" placeholder="Puerto de destino" aria-label="Puerto de destino">
+
+
+            <div class="row g-3">
+                <div class="col-md">
+                    <div class="form-floating mb-3">
+                        <input id="pOrigen" type="text" class="form-control" placeholder="Puerto de origen" aria-label="Puerto de origen">
+                        <label>Puerto de origen</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating mb-3">
+                        <input id="pProced" type="text" class="form-control" placeholder="Puerto de procedencia" aria-label="Puerto de procedencia">
+                        <label>Puerto de procedencia</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating mb-3">
+                        <input id="pDest" type="text" class="form-control" placeholder="Puerto de destino" aria-label="Puerto de destino">
+                        <label>Puerto de destino</label>
+                    </div>
+                </div>
             </div>
+
             <div class="input-group mb-3">
-                <input id="tMerca" type="text" class="form-control" placeholder="Tipo de mercancia" aria-label="Tipo de mercancia">
-                <input id="nEmpre" type="text" class="form-control" placeholder="Nombre de la empresa de transporte" aria-label="Nombre de la empresa de transporte">
+                <span class="input-group-text"><i class="bi bi-box2-fill"></i></span>
+                <div class="form-floating">
+                    <input id="tMerca" type="text" class="form-control" placeholder="Tipo de mercancia" aria-label="Tipo de mercancia">
+                    <label>Tipo de mercancia</label>
+                </div>
+                <span class="input-group-text"><i class="bi bi-buildings-fill"></i></span>
+                <div class="form-floating ">
+                    <input id="nEmpre" type="text" class="form-control" placeholder="Nombre de la empresa de transporte" aria-label="Nombre de la empresa de transporte" required>
+                    <label>Nombre de la empresa de transporte</label>
+                </div>
             </div>
 
             <!-- Campos para los 52 puntos del checklist -->
             <div class="accordion" id="accordionPuntos">
                 <!-- Se insertan los items con AJAX y JQUERY -->
             </div>
+
+            <!-- DIV para el boton de guardado -->
+            <div class="d-flex justify-content-center align-items-center" style="padding: 3rem;">
+                <button type="submit" id="guardar" class="btn btn-success" style="margin-right: 2%;"> Guardar cambios <i class="bi bi-patch-check"></i></button>
+            </div>
+            <!-- FIN DE DIV para el boton de guardado -->
         </form>
     </div>
-
-    <!-- DIV para el boton de guardado -->
-    <div class="d-flex justify-content-center align-items-center" style="padding: 3rem;">
-        <button type="button" id="guardar" class="btn btn-success" style="margin-right: 2%;"> Guardar cambios <i class="bi bi-patch-check"></i></button>
-    </div>
-    <!-- FIN DE DIV para el boton de guardado -->
 
     <!-- Footer de la pagina con bootstrap -->
     <footer class="mt-auto bg-dark text-center text-white">
