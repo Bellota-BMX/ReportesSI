@@ -9,6 +9,22 @@ $(document).ready(function () {
     let cantidadDetalles = 5; //La cantidad de detalles a guardar + 1 
     let tSet = new Set([1, 3]); // pre-construct un SET con los puntos que deben llevar imagen
 
+    //Validar tamaño de archivo cada que cambien los imput de file
+    $(document).on('change', 'input[type=file]', function () {
+        //Se recupera el tamaño del archivo en bytes
+        console.log(this.files[0].size);
+        //Se convierte la cantidad de bytes a megabyte
+        var numb = $(this)[0].files[0].size / 1024 / 1024;
+        //Se comvierte el numero a dos decimales
+        numb = numb.toFixed(2);
+        if (numb < 2) {
+            console.log("Imagen correcta");
+        } else {
+            alert('El archivo es muy pesado, intente nuevamente');
+            this.value = '';
+        }
+    });
+
     //Carga de todos los elementos del items del acordeon
     $.ajax({
         url: "php/obtener17Puntos.php",
@@ -48,7 +64,7 @@ $(document).ready(function () {
                                 <input id="observ`+ item.numeroPunto + `" type="text" class="form-control" placeholder="Observaciones" aria-label="Onservaciones">
                             </div>
                             <div class="input-group mb-3">
-                                <input type="file" name="myfile`+ item.numeroPunto + `" id="myfile` + item.numeroPunto + `" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                                <input accept="image/jpg,image/png,image/jpeg,image/gif"  type="file" name="myfile`+ item.numeroPunto + `" id="myfile` + item.numeroPunto + `" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
                             </div>
                             <img id="blah" width="40%" />
                         </div>
