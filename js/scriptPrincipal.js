@@ -1,12 +1,13 @@
 $(document).ready(function () {
 
-    //Limpiando todos los valores del formulario
+    //Limpiando todos los valores del formulario al cargar la pagina
     $('#form')[0].reset();
 
     //Declarando variables globales
     let fecha, hEntrada, hSalida, pOrigen, pProced, pDest, tMerca, nEmpre; //Variables de la cabecera
     let idCabeceraInsertada; //Identificador de la cabecera
-    let cantidadDetalles = 3; //La cantidad de detalles a guardar + 1 
+    let cantidadDetalles = 5; //La cantidad de detalles a guardar + 1 
+    let tSet = new Set([1, 3]); // pre-construct un SET con los puntos que deben llevar imagen
 
     //Carga de todos los elementos del items del acordeon
     $.ajax({
@@ -18,8 +19,6 @@ $(document).ready(function () {
         var resultadoJSON = JSON.parse(res);
         //Se imprime el objeto en consola para pruebas
         console.log(resultadoJSON);
-        // pre-construct un SET con los puntos que deben llevar imagen
-        var tSet = new Set([1, 3]);
 
         //Se recorre cada resultado del JSON obtenido con AJAX
         $.each(resultadoJSON, function (i, item) {
@@ -49,7 +48,7 @@ $(document).ready(function () {
                                 <input id="observ`+ item.numeroPunto + `" type="text" class="form-control" placeholder="Observaciones" aria-label="Onservaciones">
                             </div>
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                                <input type="file" name="myfile`+ item.numeroPunto + `" id="myfile` + item.numeroPunto + `" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
                             </div>
                             <img id="blah" width="40%" />
                         </div>
@@ -85,8 +84,6 @@ $(document).ready(function () {
 
                 $("#accordionPuntos").append(accorItem);
             }
-
-
         })
     });
 
@@ -124,6 +121,7 @@ $(document).ready(function () {
             },
         }).done(function (res) {
             var resultado = res;
+            //Solo si se inserta la cabecera se busca su id con AJAX
             if (resultado = 1) {
                 //Obtencion del ID de la cabecera insertada en el mismo proceso
                 idCabeceraInsertada = $.ajax({
@@ -146,30 +144,79 @@ $(document).ready(function () {
 
                 //Obteniendo los valores de los 52 detalles dentro de un ciclo
                 for (i = 1; i < cantidadDetalles; i++) {
-                    var cumple = $('#cumple' + i).val();
-                    var observ = $('#observ' + i).val();
-                    var idCatalogo = i;
+                    //Se valida si el deatalle tiene una imagen para insertar o si no la tiene y es solo texto
+                    if (tSet.has(i)) {
 
-                    console.log(cumple);
-                    console.log(observ);
-                    console.log(idCatalogo);
-                    //Metodo AJAX para insertar el detalle en curso
-                    $.ajax({
-                        url: "php/guardarDetalle.php",
-                        method: "POST",
-                        data: {
-                            param0: cumple,
-                            param1: observ,
-                            param2: idCatalogo,
-                            param3: idCabeceraInsertada
-                        },
-                    }).done(function (res) {
-                        if (res = 1) {
-                            console.log("Detalle registrado");
-                        } else {
-                            console.log("Detalle no registrado");
-                        }
-                    })
+                        // Se crea un nuevo FormData (Solo se puede hacer el guardado del archivo si va en un formData)
+                        var fd = new FormData();
+                        //Se obtiene el archivo actual y se guarda en una variable
+                        var files = $('#myfile' + i)[0].files[0];
+                        //Se añade la variable del archivo al formData
+                        fd.append('file', files);
+                        //Se carga al servidor con ayuda de AJAX
+                        $.ajax({
+                            url: 'php/upload.php',
+                            type: 'POST',
+                            data: fd,
+                            contentType: false,
+                            processData: false,
+                            success: function (response) {
+                                if (response != 0) {
+                                    console.log("Archivo subido");
+                                } else {
+                                    console.log("NO subido");
+                                }
+                            }
+                        })
+
+                        //A PARTIR DE AQUI ES PRUEBA
+                        var cumple = $('#cumple' + i).val();
+                        var observ = $('#observ' + i).val();
+                        var nombreimg = $('#myfile' + i)[0].files[0].name;
+                        var idCatalogo = i;
+
+                        $.ajax({
+                            url: "php/guardarDetalleImagen2.php",
+                            method: "POST",
+                            data: {
+                                param0: cumple,
+                                param1: observ,
+                                param2: idCatalogo,
+                                param3: idCabeceraInsertada,
+                                param4: nombreimg
+                            },
+                        }).done(function (res) {
+                            console.log(res);
+                        })
+
+                        //FIN DE LA PRUEBA
+
+                    } else {
+                        var cumple = $('#cumple' + i).val();
+                        var observ = $('#observ' + i).val();
+                        var idCatalogo = i;
+
+                        console.log(cumple);
+                        console.log(observ);
+                        console.log(idCatalogo);
+                        //Metodo AJAX para insertar el detalle en curso
+                        $.ajax({
+                            url: "php/guardarDetalle.php",
+                            method: "POST",
+                            data: {
+                                param0: cumple,
+                                param1: observ,
+                                param2: idCatalogo,
+                                param3: idCabeceraInsertada
+                            },
+                        }).done(function (res) {
+                            if (res = 1) {
+                                console.log("Detalle registrado");
+                            } else {
+                                console.log("Detalle no registrado");
+                            }
+                        })
+                    }
                 }
                 alert("Cabecera añadido correctamente");
             } else {

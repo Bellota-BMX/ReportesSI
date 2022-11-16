@@ -53,7 +53,7 @@
             <h3> INSPECCIONES DE SEGURIDAD Y AGRÍCOLAS SISTEMÁTICAS DE CTPAT/OEA DE 17 PUNTOS</h3>
         </div>
         <!-- Inicio del formulario -->
-        <form id="form">
+        <form id="form" enctype="multipart/form-data">
             <!-- Campos para la cabecera -->
             <div class="row g-3">
                 <div class="col-md">
