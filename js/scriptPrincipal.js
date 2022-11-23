@@ -17,6 +17,7 @@ $(document).ready(function () {
         var numb = $(this)[0].files[0].size / 1024 / 1024;
         //Se comvierte el numero a dos decimales
         numb = numb.toFixed(2);
+        //La fotografia tiene que ser menor a 2 MB
         if (numb < 2) {
             console.log("Imagen correcta");
         } else {
