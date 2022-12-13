@@ -112,8 +112,71 @@
             </div>
 
             <!-- Campos para los 52 puntos del checklist -->
-            <div class="accordion" id="accordionPuntos">
+            <div class="accordion">
                 <!-- Se insertan los items con AJAX y JQUERY -->
+                <!-- Se crean acordiones para las categorias, en los cuales se van a insertar acordiones adicionales por cada punto encontrado -->
+                <div class="accordion" id="accordionCategorias">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Observaciones del vehiculo
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionCategorias">
+                            <div class="accordion-body">
+                                <div id="accordionPuntos1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Contenedor - Aspectos generales
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionCategorias">
+                            <div class="accordion-body">
+                                <div id="accordionPuntos2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Contenedor - Piso
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionCategorias">
+                            <div class="accordion-body">
+                                <div id="accordionPuntos3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Contenedor - Techo
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionCategorias">
+                            <div class="accordion-body">
+                                <div id="accordionPuntos4"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Contenedor - Costados
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionCategorias">
+                            <div class="accordion-body">
+                                <div id="accordionPuntos5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- DIV para el boton de guardado -->

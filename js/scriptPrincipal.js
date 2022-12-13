@@ -6,8 +6,9 @@ $(document).ready(function () {
     //Declarando variables globales
     let fecha, hEntrada, hSalida, pOrigen, pProced, pDest, tMerca, nEmpre; //Variables de la cabecera
     let idCabeceraInsertada; //Identificador de la cabecera
-    let cantidadDetalles = 5; //La cantidad de detalles a guardar + 1 
+    let cantidadDetalles = 13; //La cantidad de detalles a guardar + 1 
     let tSet = new Set([1, 3]); // pre-construct un SET con los puntos que deben llevar imagen
+    //let tSetPuntosActivos;
 
     //Validar tamaño de archivo cada que cambien los imput de file
     $(document).on('change', 'input[type=file]', function () {
@@ -41,6 +42,10 @@ $(document).ready(function () {
         $.each(resultadoJSON, function (i, item) {
             console.log(item.nombrePunto);
             console.log(item.numeroPunto);
+            //tSetPuntosActivos.add(item.numeroPunto);
+
+            //Asignando la categoria del punto en una variable
+            var categoria = item.idCategoria;
 
             if (tSet.has(item.numeroPunto)) {
                 //Si el SET tiene el punto en curso entonces se inserta el item del acordion con IMAGEN
@@ -72,7 +77,25 @@ $(document).ready(function () {
                     </div>
                 </div>`;
 
-                $("#accordionPuntos").append(accorItem);
+                switch (categoria) {
+                    case 1:
+                        $("#accordionPuntos1").append(accorItem);
+                        break;
+                    case 2:
+                        $("#accordionPuntos2").append(accorItem);
+                        break;
+                    case 3:
+                        $("#accordionPuntos3").append(accorItem);
+                        break;
+                    case 4:
+                        $("#accordionPuntos4").append(accorItem);
+                        break;
+                    case 5:
+                        $("#accordionPuntos5").append(accorItem);
+                        break;
+                }
+
+                //$("#accordionPuntos").append(accorItem);
             } else {
                 //Si el SET no tiene el punto en curso entonces se inserta sin IMAGEN 
                 var accorItem = `
@@ -99,7 +122,25 @@ $(document).ready(function () {
                     </div>
                 </div>`;
 
-                $("#accordionPuntos").append(accorItem);
+                switch (categoria) {
+                    case 1:
+                        $("#accordionPuntos1").append(accorItem);
+                        break;
+                    case 2:
+                        $("#accordionPuntos2").append(accorItem);
+                        break;
+                    case 3:
+                        $("#accordionPuntos3").append(accorItem);
+                        break;
+                    case 4:
+                        $("#accordionPuntos4").append(accorItem);
+                        break;
+                    case 5:
+                        $("#accordionPuntos5").append(accorItem);
+                        break;
+                }
+
+                //$("#accordionPuntos").append(accorItem);
             }
         })
     });
