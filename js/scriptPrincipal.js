@@ -6,9 +6,9 @@ $(document).ready(function () {
     //Declarando variables globales
     let fecha, hEntrada, hSalida, pOrigen, pProced, pDest, tMerca, nEmpre; //Variables de la cabecera
     let idCabeceraInsertada; //Identificador de la cabecera
-    let cantidadDetalles = 13; //La cantidad de detalles a guardar + 1 
+    let cantidadDetalles = 53; //La cantidad de detalles a guardar + 1 
     let tSet = new Set([1, 3]); // pre-construct un SET con los puntos que deben llevar imagen
-    //let tSetPuntosActivos;
+    let tSetPuntosActivos = new Set(); //Set para añadir los puntos que esten activos o añadidos en BD
 
     //Validar tamaño de archivo cada que cambien los imput de file
     $(document).on('change', 'input[type=file]', function () {
@@ -42,7 +42,8 @@ $(document).ready(function () {
         $.each(resultadoJSON, function (i, item) {
             console.log(item.nombrePunto);
             console.log(item.numeroPunto);
-            //tSetPuntosActivos.add(item.numeroPunto);
+            tSetPuntosActivos.add(item.numeroPunto);
+            console.log(tSetPuntosActivos);
 
             //Asignando la categoria del punto en una variable
             var categoria = item.idCategoria;
@@ -200,8 +201,9 @@ $(document).ready(function () {
 
                 console.log(idCabeceraInsertada);
 
-                //Obteniendo los valores de los 52 detalles dentro de un ciclo
-                for (i = 1; i < cantidadDetalles; i++) {
+                //Por cada punto activo guardado en el set, se va a añadir un detalle. De ese modo deja de ser necesario el for de 52 posiciones por si se añaden mas puntos o por si restan puntos
+                tSetPuntosActivos.forEach(function (i) {
+                    //console.log("valor del each "+ i);
                     //Se valida si el deatalle tiene una imagen para insertar o si no la tiene y es solo texto
                     if (tSet.has(i)) {
 
@@ -275,9 +277,9 @@ $(document).ready(function () {
                             }
                         })
                     }
-                }
+                });
                 alert("Cabecera añadido correctamente");
-            } else {
+            } else { //
                 alert("EL REGISTRO NO PUDO SER AÑADIDO");
             }
         });
