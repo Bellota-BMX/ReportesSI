@@ -124,7 +124,7 @@
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionCategorias">
                             <div class="accordion-body">
-                                <div id="accordionPuntos1"></div>
+                                <div class="accordion" id="accordionPuntos1"></div>
                             </div>
                         </div>
                     </div>
@@ -136,7 +136,7 @@
                         </h2>
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionCategorias">
                             <div class="accordion-body">
-                                <div id="accordionPuntos2"></div>
+                                <div class="accordion" id="accordionPuntos2"></div>
                             </div>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionCategorias">
                             <div class="accordion-body">
-                                <div id="accordionPuntos3"></div>
+                                <div class="accordion" id="accordionPuntos3"></div>
                             </div>
                         </div>
                     </div>
@@ -160,7 +160,7 @@
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionCategorias">
                             <div class="accordion-body">
-                                <div id="accordionPuntos4"></div>
+                                <div class="accordion" id="accordionPuntos4"></div>
                             </div>
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                         </h2>
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionCategorias">
                             <div class="accordion-body">
-                                <div id="accordionPuntos5"></div>
+                                <div class="accordion" id="accordionPuntos5"></div>
                             </div>
                         </div>
                     </div>

@@ -52,12 +52,12 @@ $(document).ready(function () {
                 //Si el SET tiene el punto en curso entonces se inserta el item del acordion con IMAGEN
                 var accorItem = `
                 <div class="accordion-item">
-                    <h2 class="accordion-header">
+                    <h2 class="accordion-header" id="heading`+ item.numeroPunto +`">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse`+ item.numeroPunto + `" aria-expanded="false" aria-controls="collapse` + item.numeroPunto + `">
                             <span class="badge text-bg-secondary">`+ item.numeroPunto + `</span> &nbsp; ` + item.nombrePunto + `
                         </button>
                     </h2>
-                    <div id="collapse`+ item.numeroPunto + `" class="accordion-collapse collapse" aria-labelledby="heading` + item.numeroPunto + `" data-bs-parent="#accordionPuntos">
+                    <div id="collapse`+ item.numeroPunto + `" class="accordion-collapse collapse" aria-labelledby="heading`+ categoria+`" data-bs-parent="#accordionPuntos` + categoria + `">
                         <div class="accordion-body">
                             <div class="input-group mb-3">
                                 <select id="cumple`+ item.numeroPunto + `" class="form-select" aria-label="Opciones de cumplimiento">
@@ -101,12 +101,12 @@ $(document).ready(function () {
                 //Si el SET no tiene el punto en curso entonces se inserta sin IMAGEN 
                 var accorItem = `
                 <div class="accordion-item">
-                    <h2 class="accordion-header">
+                    <h2 class="accordion-header" id="heading`+ item.numeroPunto +`">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse`+ item.numeroPunto + `" aria-expanded="false" aria-controls="collapse` + item.numeroPunto + `">
                             <span class="badge text-bg-secondary">`+ item.numeroPunto + `</span> &nbsp; ` + item.nombrePunto + `
                         </button>
                     </h2>
-                    <div id="collapse`+ item.numeroPunto + `" class="accordion-collapse collapse" aria-labelledby="heading` + item.numeroPunto + `" data-bs-parent="#accordionPuntos">
+                    <div id="collapse`+ item.numeroPunto + `" class="accordion-collapse collapse" aria-labelledby="heading`+ categoria+`" data-bs-parent="#accordionPuntos` + categoria + `">
                         <div class="accordion-body">
                             <div class="input-group mb-3">
                                 <select id="cumple`+ item.numeroPunto + `" class="form-select" aria-label="Opciones de cumplimiento">
