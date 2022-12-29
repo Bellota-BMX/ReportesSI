@@ -68,24 +68,24 @@
                 <tr>
                     <th scope="row">N/A</th>
                     <td>2022-01-20</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
+                    <td>Transporte 4638</td>
+                    <td>Puerto 3273</td>
+                    <td>Destino 046</td>
                     <td><button disabled type="submit" id="guardar" class="btn btn-primary"> <i class="bi bi-file-earmark-pdf-fill"></i> Generar PDF</button></td>
                 </tr>
                 <tr>
                     <th scope="row">N/A</th>
                     <td>2022-01-20</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>@mdo</td>
+                    <td>Transporte 3648</td>
+                    <td>Puerto 3437</td>
+                    <td>Destino 003</td>
                     <td><button disabled type="submit" id="guardar" class="btn btn-primary"> <i class="bi bi-file-earmark-pdf-fill"></i> Generar PDF</button></td>
 
                 </tr>
                 <tr>
                     <th scope="row">N/A</th>
                     <td colspan="3">2022-01-20</td>
-                    <td>@twitter</td>
+                    <td>Destino 738</td>
                     <td><button disabled type="submit" id="guardar" class="btn btn-primary"> <i class="bi bi-file-earmark-pdf-fill"></i> Generar PDF</button></td>
                 </tr>
             </tbody>
