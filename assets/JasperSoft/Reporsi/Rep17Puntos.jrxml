@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="17 puntos" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ced95029-b569-4027-895c-af2843a4e088">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="17 puntos" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="ced95029-b569-4027-895c-af2843a4e088">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="REPORSI"/>
-	<property name="com.jaspersoft.studio.data.sql.tables">
-		<![CDATA[cmVwb3JzaS5jYWJlY2VyYXJldmlzaW9uMTdwdW50b3MgLDE3OCwxNSwzMTk2OGFmNC1jYjgyLTRm
-N2EtYjczYy0yZDI2NGY4YWVkODY7cmVwb3JzaS5kZXRhbGxlcmV2aXNpb24xN3B1bnRvcyAsMTUs
-MTY5LDQ4ZjQ5NWYxLTdiYTEtNGFmNy05YzcwLTJjNTE1Y2I5OTA2MDtyZXBvcnNpLnB1bnRvZXZh
-bHVhcjE3cCAsMTc4LDMxMywwNjgwNzUwNi0xMDU1LTQ1M2MtODZiNi1iZmJhODhjODlmMWE7cmVw
-b3JzaS5jYXRlZ29yaWExN3AgLDM1MywzMzksNDQxNDA4NWEtZTk2Ny00MzlmLWE1NDMtNzI1NTc4
-ZDcxZjM4Ow==]]>
-	</property>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true"/>
 	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -20,6 +13,13 @@ ZDcxZjM4Ow==]]>
 			<style backcolor="#E6DAC3"/>
 		</conditionalStyle>
 	</style>
+	<style name="Style1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{cumpleform} == "SI"]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF0000" isBold="true"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="idCabecera" class="java.lang.Integer"/>
 	<queryString>
 		<![CDATA[SELECT reporsi.cabecerarevision17puntos.`idCabecera`,
 	reporsi.cabecerarevision17puntos.fecha,
@@ -35,7 +35,12 @@ ZDcxZjM4Ow==]]>
 	reporsi.cabecerarevision17puntos.`tipoMercancia`,
 	reporsi.cabecerarevision17puntos.`empresaTransporte`,
 	reporsi.detallerevision17puntos.`idCabecera`,
-	reporsi.detallerevision17puntos.cumple,
+	    CASE reporsi.detallerevision17puntos.cumple
+        WHEN '1 ' THEN 'SI'
+         WHEN 2 THEN 'NO'
+    	WHEN '3' THEN 'N/A'
+    	ELSE reporsi.detallerevision17puntos.cumple
+    END AS "cumpleform",
 	reporsi.detallerevision17puntos.observaciones,
 	reporsi.detallerevision17puntos.img,
 	reporsi.puntoevaluar17p.`numeroPunto`,
@@ -47,7 +52,8 @@ FROM reporsi.detallerevision17puntos
 	INNER JOIN reporsi.puntoevaluar17p ON 
 	 reporsi.detallerevision17puntos.`idCatalogo` = reporsi.puntoevaluar17p.`idCatalogo` 
 	INNER JOIN reporsi.categoria17p ON 
-	 reporsi.puntoevaluar17p.`idCategoria` = reporsi.categoria17p.`idCategoria`]]>
+	 reporsi.puntoevaluar17p.`idCategoria` = reporsi.categoria17p.`idCategoria`
+	 WHERE reporsi.cabecerarevision17puntos.`idCabecera` = $P{idCabecera}]]>
 	</queryString>
 	<field name="idCabecera" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="idCabecera"/>
@@ -119,10 +125,9 @@ FROM reporsi.detallerevision17puntos
 		<property name="com.jaspersoft.studio.field.label" value="idCabecera"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="detallerevision17puntos"/>
 	</field>
-	<field name="cumple" class="java.lang.Integer">
-		<property name="com.jaspersoft.studio.field.name" value="cumple"/>
-		<property name="com.jaspersoft.studio.field.label" value="cumple"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="detallerevision17puntos"/>
+	<field name="cumpleform" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="cumpleform"/>
+		<property name="com.jaspersoft.studio.field.label" value="cumpleform"/>
 	</field>
 	<field name="observaciones" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="observaciones"/>
@@ -580,7 +585,7 @@ FROM reporsi.detallerevision17puntos
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="8"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{cumple}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{cumpleform}]]></textFieldExpression>
 				</textField>
 				<textField textAdjust="StretchHeight">
 					<reportElement style="Detail" x="416" y="-1" width="138" height="15" uuid="e4ff7292-911f-4e3e-9b35-af90d294f36c">
@@ -604,9 +609,9 @@ FROM reporsi.detallerevision17puntos
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="127" splitType="Stretch">
+		<band height="76" splitType="Stretch">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="63" width="555" height="1" uuid="fa45a887-615a-4d84-a2d7-8a2219671b3c"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="50" width="555" height="1" uuid="fa45a887-615a-4d84-a2d7-8a2219671b3c"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -641,7 +646,49 @@ FROM reporsi.detallerevision17puntos
 			</frame>
 		</band>
 	</pageFooter>
+	<lastPageFooter>
+		<band height="25" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="120cb0d7-8743-48d3-bb07-d62eb4a0ad69"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="916018d6-1048-405c-955f-e5a55ca7cb31"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="fdd78350-3717-40eb-a24d-0e30a02b8278"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report" pattern="M/d/yy">
+					<reportElement style="Column header" x="22" y="1" width="197" height="20" forecolor="#736343" uuid="271a8a6f-f0e1-46ef-84fe-14a652f634f6"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Documento generado el " + new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</lastPageFooter>
 	<summary>
-		<band splitType="Stretch"/>
+		<band height="216" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<subreport overflowType="Stretch">
+				<reportElement x="1" y="10" width="550" height="206" uuid="735d52ea-77e2-4a9f-8249-ecad2b51d0d9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<subreportParameter name="idCabecera">
+					<subreportParameterExpression><![CDATA[$P{idCabecera}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["Cherry.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
 	</summary>
 </jasperReport>
