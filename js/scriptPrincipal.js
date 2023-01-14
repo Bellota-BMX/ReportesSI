@@ -11,7 +11,7 @@ $(document).ready(function () {
     let tSetPuntosActivos = new Set(); //Set para añadir los puntos que esten activos o añadidos en BD
 
     //Validar tamaño de archivo cada que cambien los imput de file
-    $(document).on('change', 'input[type=file]', function () {
+    $(document).on('change', 'input[type=file]', function (event) {
         //Se recupera el tamaño del archivo en bytes
         console.log(this.files[0].size);
         //Se convierte la cantidad de bytes a megabyte
@@ -21,6 +21,31 @@ $(document).ready(function () {
         //La fotografia tiene que ser menor a 2 MB
         if (numb < 2) {
             console.log("Imagen correcta");
+            //Se obtiene el id del input que desencadeno el evento
+            var id = event.target.id;
+            // Se crea un nuevo FormData (Solo se puede hacer el guardado del archivo si va en un formData)
+            var formData = new FormData();
+            //Se obtiene el archivo actual y se guarda en una variable
+            var files = $('#' + id)[0].files[0];
+            //Se añade la variable del archivo al formData
+            formData.append('file', files);
+            //Se carga al servidor con ayuda de AJAX
+            $.ajax({
+                url: 'php/upload.php',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response == 1) {
+                        console.log(response);
+                        console.log("Archivo subido");
+                        console.log($('#' + id)[0].files[0]);
+                    } else {
+                        console.log("NO subido");
+                    }
+                }
+            })
         } else {
             alert('El archivo es muy pesado, intente nuevamente');
             this.value = '';
@@ -52,12 +77,12 @@ $(document).ready(function () {
                 //Si el SET tiene el punto en curso entonces se inserta el item del acordion con IMAGEN
                 var accorItem = `
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading`+ item.numeroPunto +`">
+                    <h2 class="accordion-header" id="heading`+ item.numeroPunto + `">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse`+ item.numeroPunto + `" aria-expanded="false" aria-controls="collapse` + item.numeroPunto + `">
                             <span class="badge text-bg-secondary">`+ item.numeroPunto + `</span> &nbsp; ` + item.nombrePunto + `
                         </button>
                     </h2>
-                    <div id="collapse`+ item.numeroPunto + `" class="accordion-collapse collapse" aria-labelledby="heading`+ categoria+`" data-bs-parent="#accordionPuntos` + categoria + `">
+                    <div id="collapse`+ item.numeroPunto + `" class="accordion-collapse collapse" aria-labelledby="heading` + categoria + `" data-bs-parent="#accordionPuntos` + categoria + `">
                         <div class="accordion-body">
                             <div class="input-group mb-3">
                                 <select id="cumple`+ item.numeroPunto + `" class="form-select" aria-label="Opciones de cumplimiento">
@@ -101,12 +126,12 @@ $(document).ready(function () {
                 //Si el SET no tiene el punto en curso entonces se inserta sin IMAGEN 
                 var accorItem = `
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading`+ item.numeroPunto +`">
+                    <h2 class="accordion-header" id="heading`+ item.numeroPunto + `">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse`+ item.numeroPunto + `" aria-expanded="false" aria-controls="collapse` + item.numeroPunto + `">
                             <span class="badge text-bg-secondary">`+ item.numeroPunto + `</span> &nbsp; ` + item.nombrePunto + `
                         </button>
                     </h2>
-                    <div id="collapse`+ item.numeroPunto + `" class="accordion-collapse collapse" aria-labelledby="heading`+ categoria+`" data-bs-parent="#accordionPuntos` + categoria + `">
+                    <div id="collapse`+ item.numeroPunto + `" class="accordion-collapse collapse" aria-labelledby="heading` + categoria + `" data-bs-parent="#accordionPuntos` + categoria + `">
                         <div class="accordion-body">
                             <div class="input-group mb-3">
                                 <select id="cumple`+ item.numeroPunto + `" class="form-select" aria-label="Opciones de cumplimiento">
@@ -207,6 +232,8 @@ $(document).ready(function () {
                     //Se valida si el deatalle tiene una imagen para insertar o si no la tiene y es solo texto
                     if (tSet.has(i)) {
 
+                        //El bloque de codigo se ha movido al punto donde se validan las imagenes para guardar las imagenes desde que se seleccionan
+                        /*
                         // Se crea un nuevo FormData (Solo se puede hacer el guardado del archivo si va en un formData)
                         var fd = new FormData();
                         //Se obtiene el archivo actual y se guarda en una variable
@@ -228,12 +255,31 @@ $(document).ready(function () {
                                 }
                             }
                         })
+                        */
 
                         //A PARTIR DE AQUI ES PRUEBA
                         var cumple = $('#cumple' + i).val();
                         var observ = $('#observ' + i).val();
                         var nombreimg = $('#myfile' + i)[0].files[0].name;
                         var idCatalogo = i;
+                        /*Bloque para la creacion de nuevo nombre para cambiar a la imagen guardada y guardarlo en DB
+                        Se da por entendido que las imagenes sin la nomenclatura son cargas que no eran correctas*/
+                        // crea un nuevo objeto `Date`
+                        var today = new Date();
+                        // `getDate()` devuelve el día del mes (del 1 al 31)
+                        var day = today.getDate();
+                        // `getMonth()` devuelve el mes (de 0 a 11)
+                        var month = today.getMonth() + 1;
+                        // `getFullYear()` devuelve el año completo
+                        var year = today.getFullYear();
+                        var hour = today.getHours();
+                        var minute = today.getMinutes();
+                        var second = today.getSeconds();
+                        //se obtiene la extension del nombre+
+                        let extension = nombreimg.split(".").pop();
+                        //se concatenan los datos y se asignan a la variable del nuevo nombre
+                        var nombreimgNuevo = month + '' + day + '' + year + '-' + hour + '' + minute + '' + second+ '-' + i + '.'+extension;
+                        
 
                         $.ajax({
                             url: "php/guardarDetalleImagen2.php",
@@ -243,7 +289,8 @@ $(document).ready(function () {
                                 param1: observ,
                                 param2: idCatalogo,
                                 param3: idCabeceraInsertada,
-                                param4: nombreimg
+                                param4: nombreimg,
+                                param5: nombreimgNuevo
                             },
                         }).done(function (res) {
                             console.log(res);

@@ -12,7 +12,7 @@ if ($uploadOk == 0) {
 } else {
     /* Upload file */
     if (move_uploaded_file($_FILES['file']['tmp_name'], $location)) {
-        echo $location;
+        echo 1;
     } else {
         echo 0;
     }
