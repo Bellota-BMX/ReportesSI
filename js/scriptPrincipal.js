@@ -96,9 +96,9 @@ $(document).ready(function () {
                                 <input id="observ`+ item.numeroPunto + `" type="text" class="form-control" placeholder="Observaciones" aria-label="Onservaciones">
                             </div>
                             <div class="input-group mb-3">
-                                <input accept="image/jpg,image/png,image/jpeg,image/gif"  type="file" name="myfile`+ item.numeroPunto + `" id="myfile` + item.numeroPunto + `" class="form-control" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])">
+                                <input accept="image/jpg,image/png,image/jpeg,image/gif"  type="file" name="myfile`+ item.numeroPunto + `" id="myfile` + item.numeroPunto + `" class="form-control" onchange="document.getElementById('preview`+ item.numeroPunto + `').src = window.URL.createObjectURL(this.files[0])">
                             </div>
-                            <img id="blah" width="40%" />
+                            <img id="preview`+ item.numeroPunto + `" class="img-thumbnail rounded" width= "22.64%" height="22.64%" />
                         </div>
                     </div>
                 </div>`;
