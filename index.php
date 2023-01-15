@@ -179,6 +179,35 @@
                 </div>
             </div>
 
+            <br>
+            <!-- Accordion firmas -->
+            <div class="accordion" id="accordionFirmas">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFirma1">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFirma1" aria-expanded="false" aria-controls="collapseFirma1">
+                            Datos de quien realizó la inspección
+                        </button>
+                    </h2>
+                    <div id="collapseFirma1" class="accordion-collapse collapse" aria-labelledby="headingFirma1" data-bs-parent="#accordionFirmas">
+                        <div class="accordion-body">
+                            <!-- Recuadro de firma 1 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFirma2">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFirma2" aria-expanded="false" aria-controls="collapseFirma2">
+                            Datos de quien acepta y recibe
+                        </button>
+                    </h2>
+                    <div id="collapseFirma2" class="accordion-collapse collapse" aria-labelledby="headingFirma2" data-bs-parent="#accordionFirmas">
+                        <div class="accordion-body">
+                            <!-- Recuadro de firma 2 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- DIV para el boton de guardado -->
             <div class="d-flex justify-content-center align-items-center" style="padding: 3rem;">
                 <button type="submit" id="guardar" class="btn btn-success" style="margin-right: 2%;"> Guardar cambios <i class="bi bi-patch-check"></i></button>

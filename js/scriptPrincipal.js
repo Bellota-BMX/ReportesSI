@@ -226,6 +226,9 @@ $(document).ready(function () {
 
                 console.log(idCabeceraInsertada);
 
+                //EN ESTE PUNTO PODEMOS TRABAJAR CON LA FIRMA
+                
+
                 //Por cada punto activo guardado en el set, se va a añadir un detalle. De ese modo deja de ser necesario el for de 52 posiciones por si se añaden mas puntos o por si restan puntos
                 tSetPuntosActivos.forEach(function (i) {
                     //console.log("valor del each "+ i);

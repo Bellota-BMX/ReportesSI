@@ -1,1 +1,6 @@
 https://stackoverflow.com/questions/48239/getting-the-id-of-the-element-that-fired-an-event
+
+//E Signature using Canvas - CodePen
+
+https://stackoverflow.com/questions/16348031/disable-scrolling-when-touch-moving-certain-element
+https://codepen.io/yguo/pen/OyYGxQ
