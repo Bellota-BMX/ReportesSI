@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-icons.css">
     <link rel="stylesheet" href="css/heading.css">
+    <link rel="stylesheet" href="css/canvas.css">
     <link rel="icon" href="assets/iconfullRed.ico">
     <title>Reporte 17 puntos</title>
 </head>
@@ -185,24 +186,30 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFirma1">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFirma1" aria-expanded="false" aria-controls="collapseFirma1">
-                            Datos de quien realizó la inspección
+                            Firma de quien realizó la inspección
                         </button>
                     </h2>
                     <div id="collapseFirma1" class="accordion-collapse collapse" aria-labelledby="headingFirma1" data-bs-parent="#accordionFirmas">
                         <div class="accordion-body">
                             <!-- Recuadro de firma 1 -->
+                            <canvas id="sig-canvas" width="620" height="160">
+                                Si usted ve este texto, cambie de navegador
+                            </canvas>
                         </div>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="headingFirma2">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFirma2" aria-expanded="false" aria-controls="collapseFirma2">
-                            Datos de quien acepta y recibe
+                            Firma de quien acepta y recibe
                         </button>
                     </h2>
                     <div id="collapseFirma2" class="accordion-collapse collapse" aria-labelledby="headingFirma2" data-bs-parent="#accordionFirmas">
-                        <div class="accordion-body">
+                        <div class="accordion-body" >
                             <!-- Recuadro de firma 2 -->
+                            <canvas id="sig-canvas2" width="620" height="160">
+                                Si usted ve este texto, cambie de navegador
+                            </canvas>
                         </div>
                     </div>
                 </div>
@@ -247,5 +254,8 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
 <script src="js/scriptPrincipal.js"></script>
+<script src="js/firma1.js"></script>
+<script src="js/firma2.js"></script>
+
 
 </html>
