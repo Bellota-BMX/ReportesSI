@@ -8,3 +8,7 @@ https://codepen.io/yguo/pen/OyYGxQ
 http://jsfiddle.net/szimek/ps65Q/
 
 https://stackoverflow.com/questions/32617750/how-to-add-2-signature-pad-in-a-same-page
+
+//sub reporte jasper
+https://community.jaspersoft.com/questions/1052136/subreport-printed-multiple-times-jasper-report
+https://community.jaspersoft.com/wiki/subreports-jaspersoft-studio
