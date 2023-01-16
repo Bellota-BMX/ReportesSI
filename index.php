@@ -192,9 +192,12 @@
                     <div id="collapseFirma1" class="accordion-collapse collapse" aria-labelledby="headingFirma1" data-bs-parent="#accordionFirmas">
                         <div class="accordion-body">
                             <!-- Recuadro de firma 1 -->
-                            <canvas id="sig-canvas" width="620" height="160">
-                                Si usted ve este texto, cambie de navegador
-                            </canvas>
+                            <div id="signature-pad-1" class="signature-pad">
+                                <div class="signature-pad--body">
+                                    <canvas width="400" height="200"></canvas>
+                                </div>
+                            </div>
+                            <button id="clear1">Limpiar firma</button>
                         </div>
                     </div>
                 </div>
@@ -205,11 +208,14 @@
                         </button>
                     </h2>
                     <div id="collapseFirma2" class="accordion-collapse collapse" aria-labelledby="headingFirma2" data-bs-parent="#accordionFirmas">
-                        <div class="accordion-body" >
+                        <div class="accordion-body">
                             <!-- Recuadro de firma 2 -->
-                            <canvas id="sig-canvas2" width="620" height="160">
-                                Si usted ve este texto, cambie de navegador
-                            </canvas>
+                            <div id="signature-pad-2" class="signature-pad">
+                                <div class="signature-pad--body">
+                                    <canvas width="400" height="200"></canvas>
+                                </div>
+                            </div>
+                            <button id="clear2">Limpiar firma</button>
                         </div>
                     </div>
                 </div>
@@ -253,9 +259,9 @@
 
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/bootstrap.bundle.js"></script>
-<script src="js/scriptPrincipal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
 <script src="js/firma1.js"></script>
-<script src="js/firma2.js"></script>
+<script src="js/scriptPrincipal.js"></script>
 
 
 </html>

@@ -4,3 +4,7 @@ https://stackoverflow.com/questions/48239/getting-the-id-of-the-element-that-fir
 
 https://stackoverflow.com/questions/16348031/disable-scrolling-when-touch-moving-certain-element
 https://codepen.io/yguo/pen/OyYGxQ
+
+http://jsfiddle.net/szimek/ps65Q/
+
+https://stackoverflow.com/questions/32617750/how-to-add-2-signature-pad-in-a-same-page

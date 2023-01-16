@@ -1,13 +1,11 @@
-#sig-canvas {
+#signature-pad-1 canvas {
     border: 2px dotted #CCCCCC;
     border-radius: 15px;
     cursor: crosshair;
-    touch-action: none;
 }
 
-#sig-canvas2 {
+#signature-pad-2 canvas {
     border: 2px dotted #CCCCCC;
     border-radius: 15px;
     cursor: crosshair;
-    touch-action: none;
 }
