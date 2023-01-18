@@ -228,8 +228,14 @@ $(document).ready(function () {
 
                 //EN ESTE PUNTO PODEMOS TRABAJAR CON LA FIRMA
                 //Obtenemos la informacion de la firma (Base 64)
-                var firma1 = signaturePad1.toDataURL();
-                var firma2 = signaturePad2.toDataURL();
+                var firma1base64 = signaturePad1.toDataURL();
+                //Se crea un arreglo, para crear un nuevo elemento debe haber una coma
+                let arrf1 = firma1base64.split(',');
+                //Se guarda el segundo elemento del arreglo que es la parte sin el "data:image/png;base64,"
+                var firma1 = arrf1[1];
+                var firma2base64 = signaturePad2.toDataURL();
+                let arrf2 = firma2base64.split(',');
+                var firma2 = arrf2[1];
                 var nRealizo = $('#nRealizo').val();
                 var nAcepta = $('#nAcepta').val();
 
