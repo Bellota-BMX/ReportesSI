@@ -191,6 +191,13 @@
                     </h2>
                     <div id="collapseFirma1" class="accordion-collapse collapse" aria-labelledby="headingFirma1" data-bs-parent="#accordionFirmas">
                         <div class="accordion-body">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-box2-fill"></i></span>
+                                <div class="form-floating">
+                                    <input id="nRealizo" type="text" class="form-control" placeholder="Nombre y apellido" aria-label="Nombre y apellido">
+                                    <label>Nombre y apellido de quien realizó la inspección</label>
+                                </div>
+                            </div>
                             <!-- Recuadro de firma 1 -->
                             <div id="signature-pad-1" class="signature-pad">
                                 <div class="signature-pad--body">
@@ -209,6 +216,13 @@
                     </h2>
                     <div id="collapseFirma2" class="accordion-collapse collapse" aria-labelledby="headingFirma2" data-bs-parent="#accordionFirmas">
                         <div class="accordion-body">
+                        <div class="input-group mb-3">
+                                <span class="input-group-text"><i class="bi bi-box2-fill"></i></span>
+                                <div class="form-floating">
+                                    <input id="nAcepta" type="text" class="form-control" placeholder="Nombre y apellido" aria-label="Nombre y apellido">
+                                    <label>Nombre y apellido de quien aprueba y acepta la inspección</label>
+                                </div>
+                            </div>
                             <!-- Recuadro de firma 2 -->
                             <div id="signature-pad-2" class="signature-pad">
                                 <div class="signature-pad--body">

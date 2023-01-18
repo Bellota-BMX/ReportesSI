@@ -230,28 +230,24 @@ $(document).ready(function () {
                 //Obtenemos la informacion de la firma (Base 64)
                 var firma1 = signaturePad1.toDataURL();
                 var firma2 = signaturePad2.toDataURL();
+                var nRealizo = $('#nRealizo').val();
+                var nAcepta = $('#nAcepta').val();
 
-                for (var i = 1; i < 3; i++) {
-                    var firma;
-                    if (i == 1) {
-                        firma = firma1;
-                    } else {
-                        firma = firma2;
-                    }
-                    var tipo = i;
 
-                    $.ajax({
-                        url: "php/guardarFirma.php",
-                        method: "POST",
-                        data: {
-                            param0: firma,
-                            param1: tipo,
-                            param2: idCabeceraInsertada,
-                        },
-                    }).done(function (res) {
-                        console.log(res);
-                    })
-                }
+                $.ajax({
+                    url: "php/guardarFirma.php",
+                    method: "POST",
+                    data: {
+                        param0: idCabeceraInsertada,
+                        param1: firma1,
+                        param2: nRealizo,
+                        param3: firma2,
+                        param4: nAcepta
+                    },
+                }).done(function (res) {
+                    console.log(res);
+                })
+
 
 
                 //Por cada punto activo guardado en el set, se va a añadir un detalle. De ese modo deja de ser necesario el for de 52 posiciones por si se añaden mas puntos o por si restan puntos
